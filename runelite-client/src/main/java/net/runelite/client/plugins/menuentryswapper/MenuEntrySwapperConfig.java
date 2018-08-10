@@ -239,4 +239,12 @@ public interface MenuEntrySwapperConfig extends Config
 	{
 		return false;
 	}
+
+	@ConfigItem(
+			position = 19,
+			keyName = "swapWithdraw",
+			name = "Withdraw-14",
+			description = "Swap your herb pots and secondary to be 14"
+	)
+	default boolean swapWithdraw() {return false; }
 }
