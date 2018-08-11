@@ -46,6 +46,7 @@ public class ProjectileID
 
 	public static final int OLM_FALLING_CRYSTAL_AOE = 29766;
 	public static final int OLM_BURNING_AOE = 1349;
+	public static final int OLM_BOMB_AOE = -1;
 	public static final int OLM_MAGIC_ATTACK_NORMAL = 1339;
 	public static final int OLM_RANGED_ATTACK_NORMAL = 1340;
 	public static final int OLM_RANGED_ORB_SPECIAL = 1343;
@@ -76,9 +77,6 @@ public class ProjectileID
 	public static final int DEMONIC_GORILLA_MAGIC = 1304;
 	public static final int DEMONIC_GORILLA_BOULDER = 856;
 
-	/**
-	 * missing: marble gargoyle, superior dark beast
-	 */
 
 	/**
 	 * non AOE, regular projectiles
