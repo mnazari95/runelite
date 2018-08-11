@@ -40,4 +40,10 @@ public class GraphicID
 	public static final int STAFF_OF_THE_DEAD = 1228;
 	public static final int IMBUED_HEART = 1316;
 	public static final int FLYING_FISH = 1387;
+	//Olm
+	public static final int OLM_FALLING_CRYSTAL = 1447;
+	public static final int OLM_LIGHTNING = 1356;
+	public static final int OLM_HEALING_POOLS = 1363;
+	public static final int OLM_GROUND_CRYSTAL_SHATTER = 1338;
+	public static final int OLM_FALLING_CRYSTAL_SHATTER = 1358;
 }
