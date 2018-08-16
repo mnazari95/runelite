@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Tomas Slusny <slusnucky@gmail.com>
+ * Copyright (c) 2018, Daniel Teo <https://github.com/takuyakanbr>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,48 +22,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.mixins;
+package net.runelite.client.plugins.timetracking;
 
-import java.util.EnumSet;
-import net.runelite.api.WorldType;
-import net.runelite.api.events.WorldListLoad;
-import net.runelite.api.mixins.FieldHook;
-import net.runelite.api.mixins.Inject;
-import net.runelite.api.mixins.Mixin;
-import net.runelite.api.mixins.Shadow;
-import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSWorld;
-
-@Mixin(RSWorld.class)
-public abstract class RSWorldMixin implements RSWorld
+public enum SummaryState
 {
-	@Shadow("clientInstance")
-	private static RSClient client;
-
-	@Inject
-	@Override
-	public EnumSet<WorldType> getTypes()
-	{
-		return WorldType.fromMask(getMask());
-	}
-
-	@Inject
-	@Override
-	public void setTypes(final EnumSet<WorldType> types)
-	{
-		setMask(WorldType.toMask(types));
-	}
-
-	@Inject
-	@FieldHook("playerCount")
-	public void playerCountChanged(int idx)
-	{
-		RSWorld[] worlds = client.getWorldList();
-		if (worlds != null && worlds.length > 0 && worlds[worlds.length - 1] == this)
-		{
-			// this is the last world in the list.
-			WorldListLoad worldLoad = new WorldListLoad(worlds);
-			client.getCallbacks().post(worldLoad);
-		}
-	}
+	COMPLETED,
+	IN_PROGRESS,
+	EMPTY,
+	UNKNOWN
 }

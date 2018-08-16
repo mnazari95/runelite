@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2018, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,38 +22,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.cache.io;
+package net.runelite.api.events;
 
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
+import lombok.Value;
+import net.runelite.api.World;
 
-public class OutputStreamTest
+/**
+ * Event when the world list is loaded for the world switcher
+ */
+@Value
+public class WorldListLoad
 {
-	@Test
-	public void testWriteBigSmart()
-	{
-		OutputStream os = new OutputStream();
-		os.writeBigSmart(42);
-		os.writeBigSmart(70000);
-		os.writeBigSmart(65535);
-
-		InputStream is = new InputStream(os.getArray());
-		assertEquals(42, is.readBigSmart());
-		assertEquals(70000, is.readBigSmart());
-		assertEquals(65535, is.readBigSmart());
-	}
-
-	@Test
-	public void testWriteString()
-	{
-		char[] c = new char[]{32, 160};
-		String str = new String(c, 0, c.length);
-
-		OutputStream os = new OutputStream();
-		os.writeString(str);
-
-		// 1 byte length + 32 + 160
-		assertEquals(3, os.getOffset());
-	}
-
+	private final World[] worlds;
 }

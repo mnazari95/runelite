@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Tomas Slusny <slusnucky@gmail.com>
+ * Copyright (c) 2018, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,48 +22,58 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.mixins;
+package net.runelite.client.plugins.wasdcamera;
 
-import java.util.EnumSet;
-import net.runelite.api.WorldType;
-import net.runelite.api.events.WorldListLoad;
-import net.runelite.api.mixins.FieldHook;
-import net.runelite.api.mixins.Inject;
-import net.runelite.api.mixins.Mixin;
-import net.runelite.api.mixins.Shadow;
-import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSWorld;
+import java.awt.event.KeyEvent;
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigGroup;
+import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.Keybind;
 
-@Mixin(RSWorld.class)
-public abstract class RSWorldMixin implements RSWorld
+@ConfigGroup("wasdcamera")
+public interface WASDCameraConfig extends Config
 {
-	@Shadow("clientInstance")
-	private static RSClient client;
-
-	@Inject
-	@Override
-	public EnumSet<WorldType> getTypes()
+	@ConfigItem(
+		position = 1,
+		keyName = "up",
+		name = "Up key",
+		description = "The key which will replace up."
+	)
+	default Keybind up()
 	{
-		return WorldType.fromMask(getMask());
+		return new Keybind(KeyEvent.VK_W, 0);
 	}
 
-	@Inject
-	@Override
-	public void setTypes(final EnumSet<WorldType> types)
+	@ConfigItem(
+		position = 2,
+		keyName = "down",
+		name = "Down key",
+		description = "The key which will replace down."
+	)
+	default Keybind down()
 	{
-		setMask(WorldType.toMask(types));
+		return new Keybind(KeyEvent.VK_S, 0);
 	}
 
-	@Inject
-	@FieldHook("playerCount")
-	public void playerCountChanged(int idx)
+	@ConfigItem(
+		position = 3,
+		keyName = "left",
+		name = "Left key",
+		description = "The key which will replace left."
+	)
+	default Keybind left()
 	{
-		RSWorld[] worlds = client.getWorldList();
-		if (worlds != null && worlds.length > 0 && worlds[worlds.length - 1] == this)
-		{
-			// this is the last world in the list.
-			WorldListLoad worldLoad = new WorldListLoad(worlds);
-			client.getCallbacks().post(worldLoad);
-		}
+		return new Keybind(KeyEvent.VK_A, 0);
+	}
+
+	@ConfigItem(
+		position = 4,
+		keyName = "right",
+		name = "Right key",
+		description = "The key which will replace right."
+	)
+	default Keybind right()
+	{
+		return new Keybind(KeyEvent.VK_D, 0);
 	}
 }
