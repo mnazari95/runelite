@@ -396,7 +396,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 				swap("decant", option, target, true);
 			}
 		}
-		else if (config.swapWithdraw() && (target.equals("toadflax potion (unf)") || target.equals("crushed nest"))){
+		else if (config.swapWithdraw() && (target.equals("battlestaff") || target.equals("air orbklvc "))){
 			swap("withdraw-14", option, target, true);
 		}
 		else if (config.swapTravel() && option.equals("pass") && target.equals("energy barrier"))

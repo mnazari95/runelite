@@ -53,7 +53,7 @@ public enum AOEProjectileInfo implements AOEInfo
 	 * Other
 	 */
 
-	LIZARDMAN_SHAMAN_AOE(ProjectileID.LIZARDMAN_SHAMAN_AOE, 3000, 3) {
+	LIZARDMAN_SHAMAN_AOE(ProjectileID.LIZARDMAN_SHAMAN_AOE, 3000, 4) {
 		@Override
 		public boolean isEnabled(AoeWarningConfig config) {
 			return config.isShamansEnabled();
