@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jordan Atwood <jordan.atwood423@gmail.com>
+ * Copyright (c) 2018, Robbie McLeod <https://github.com/rbbi>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,34 +22,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.opponentinfo;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
+package net.runelite.client.plugins.skillcalculator;
 
-@ConfigGroup("opponentinfo")
-public interface OpponentInfoConfig extends Config
+import javax.swing.JCheckBox;
+import lombok.Getter;
+import lombok.Setter;
+import net.runelite.client.plugins.skillcalculator.beans.SkillDataBonus;
+
+class BonusCheckBox extends JCheckBox
 {
-	@ConfigItem(
-		keyName = "lookupOnInteraction",
-		name = "Lookup players on interaction",
-		description = "Display a combat stat comparison panel on player interaction. (follow, trade, challenge, attack, etc.)",
-		position = 0
-	)
-	default boolean lookupOnInteraction()
-	{
-		return false;
-	}
-
-	@ConfigItem(
-		keyName = "showPercent",
-		name = "Show percent",
-		description = "Shows hitpoints as a percentage even if hitpoints are known",
-		position = 1
-	)
-	default boolean showPercent()
-	{
-		return false;
-	}
+	@Getter
+	@Setter
+	private SkillDataBonus bonus;
 }

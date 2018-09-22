@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2018, Jordan Atwood <jordan.atwood423@gmail.com>
+ * Copyright (c) 2018, terminatusx <jbfleischman@gmail.com>
+ * Copyright (c) 2018, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,34 +23,21 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.opponentinfo;
+package net.runelite.client.plugins.wintertodt;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-@ConfigGroup("opponentinfo")
-public interface OpponentInfoConfig extends Config
+@AllArgsConstructor
+@Getter
+enum WintertodtActivity
 {
-	@ConfigItem(
-		keyName = "lookupOnInteraction",
-		name = "Lookup players on interaction",
-		description = "Display a combat stat comparison panel on player interaction. (follow, trade, challenge, attack, etc.)",
-		position = 0
-	)
-	default boolean lookupOnInteraction()
-	{
-		return false;
-	}
+	IDLE("IDLE"),
+	WOODCUTTING("Woodcutting"),
+	FLETCHING("Fletching"),
+	FEEDING_BRAZIER("Feeding"),
+	FIXING_BRAZIER("Fixing"),
+	LIGHTING_BRAZIER("Lighting");
 
-	@ConfigItem(
-		keyName = "showPercent",
-		name = "Show percent",
-		description = "Shows hitpoints as a percentage even if hitpoints are known",
-		position = 1
-	)
-	default boolean showPercent()
-	{
-		return false;
-	}
+	private final String actionString;
 }

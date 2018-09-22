@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Jordan Atwood <jordan.atwood423@gmail.com>
+ * Copyright (c) 2018, Jacob M <https://github.com/jacoblairm>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,34 +22,53 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.opponentinfo;
+package net.runelite.client.plugins.barbarianassault;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
-@ConfigGroup("opponentinfo")
-public interface OpponentInfoConfig extends Config
+class GameTimer
 {
-	@ConfigItem(
-		keyName = "lookupOnInteraction",
-		name = "Lookup players on interaction",
-		description = "Display a combat stat comparison panel on player interaction. (follow, trade, challenge, attack, etc.)",
-		position = 0
-	)
-	default boolean lookupOnInteraction()
+	final private Instant startTime = Instant.now();
+	private Instant prevWave = startTime;
+
+	String getTime(boolean waveTime)
 	{
-		return false;
+		final Instant now = Instant.now();
+		final Duration elapsed;
+
+		if (waveTime)
+		{
+			elapsed = Duration.between(prevWave, now);
+		}
+		else
+		{
+			elapsed = Duration.between(startTime, now).minusMillis(600);
+		}
+
+		return formatTime(LocalTime.ofSecondOfDay(elapsed.getSeconds()));
 	}
 
-	@ConfigItem(
-		keyName = "showPercent",
-		name = "Show percent",
-		description = "Shows hitpoints as a percentage even if hitpoints are known",
-		position = 1
-	)
-	default boolean showPercent()
+	void setWaveStartTime()
 	{
-		return false;
+		prevWave = Instant.now();
+	}
+
+	private static String formatTime(LocalTime time)
+	{
+		if (time.getHour() > 0)
+		{
+			return time.format(DateTimeFormatter.ofPattern("HH:mm"));
+		}
+		else if (time.getMinute() > 9)
+		{
+			return time.format(DateTimeFormatter.ofPattern("mm:ss"));
+		}
+		else
+		{
+			return time.format(DateTimeFormatter.ofPattern("m:ss"));
+		}
 	}
 }
