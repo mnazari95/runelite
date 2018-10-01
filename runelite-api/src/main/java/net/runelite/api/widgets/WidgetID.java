@@ -66,6 +66,7 @@ public class WidgetID
 	public static final int QUICK_PRAYERS_GROUP_ID = 77;
 	public static final int SHOP_GROUP_ID = 300;
 	public static final int SHOP_INVENTORY_GROUP_ID = 301;
+	public static final int SMITHING_GROUP_ID = 312;
 	public static final int GUIDE_PRICES_GROUP_ID = 464;
 	public static final int GUIDE_PRICES_INVENTORY_GROUP_ID = 238;
 	public static final int COMBAT_GROUP_ID = 593;
@@ -117,6 +118,7 @@ public class WidgetID
 	public static final int FOSSIL_ISLAND_OXYGENBAR_ID = 609;
 	public static final int MINIGAME_TAB_ID = 76;
 	public static final int SPELLBOOK_GROUP_ID = 218;
+	public static final int PVP_GROUP_ID = 90;
 
 	static class WorldMap
 	{
@@ -194,10 +196,10 @@ public class WidgetID
 
 	static class Bank
 	{
-		static final int ITEM_CONTAINER = 23;
+		static final int ITEM_CONTAINER = 12;
 		static final int INVENTORY_ITEM_CONTAINER = 3;
-		static final int BANK_TITLE_BAR = 15;
-		static final int BANK_ITEM_COUNT = 16;
+		static final int BANK_TITLE_BAR = 4;
+		static final int BANK_ITEM_COUNT = 5;
 	}
 
 	static class GrandExchange
@@ -225,6 +227,11 @@ public class WidgetID
 	static class Shop
 	{
 		static final int ITEMS_CONTAINER = 2;
+		static final int INVENTORY_ITEM_CONTAINER = 0;
+	}
+
+	static class Smithing
+	{
 		static final int INVENTORY_ITEM_CONTAINER = 0;
 	}
 
@@ -395,10 +402,10 @@ public class WidgetID
 	{
 		static final int CHATBOX_PARENT = 0;
 		static final int CHATBOX_BUTTONS = 1;
-		static final int CHATBOX_REPORT_TEXT = 29;
-		static final int CHATBOX_FRAME = 30;
-		static final int CHATBOX_MESSAGES = 48;
-		static final int CHATBOX_INPUT = 50;
+		static final int CHATBOX_REPORT_TEXT = 36;
+		static final int CHATBOX_FRAME = 37;
+		static final int CHATBOX_MESSAGES = 55;
+		static final int CHATBOX_INPUT = 57;
 	}
 
 	static class Prayer
@@ -647,7 +654,7 @@ public class WidgetID
 
 	static class WorldSwitcher
 	{
-		static final int WORLD_LIST = 14;
+		static final int WORLD_LIST = 15;
 	}
 
 	static class FossilOxygen
@@ -678,5 +685,16 @@ public class WidgetID
 	static class ArceuusSpellBook
 	{
 		static final int ARCEUUS_HOME_TELEPORT = 145;
+	}
+
+	static class Pvp
+	{
+		static final int PVP_WIDGET_CONTAINER = 50;
+		static final int SKULL_CONTAINER = 51;
+		static final int SKULL = 52;
+		static final int SAFE_ZONE = 53;
+		static final int ATTACK_RANGE = 55;
+		static final int WILDERNESS_LEVEL = 56; // this can also be the Deadman Mode "Protection" text
+		static final int DEADMAN_PROTECTION_TIME = 57;
 	}
 }

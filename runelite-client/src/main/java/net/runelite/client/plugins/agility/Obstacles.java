@@ -167,6 +167,8 @@ class Obstacles
 		ROCKS_19849,
 		// Catherby
 		CROSSBOW_TREE_17062, ROCKS_17042,
+		// McGrubor's Woods
+		LOOSE_RAILING,
 		// Cairn Isle
 		ROCKS_2231,
 		// South Kourend
@@ -210,7 +212,9 @@ class Obstacles
 		// Underwater Area Fossil Island
 		TUNNEL_30959, HOLE_30966, OBSTACLE, OBSTACLE_30767, OBSTACLE_30964, OBSTACLE_30962,
 		// Tree Gnome Village
-		LOOSE_RAILING_2186
+		LOOSE_RAILING_2186,
+		// Weiss
+		LITTLE_BOULDER
 	);
 
 	static final Set<Integer> TRAP_OBSTACLE_IDS = ImmutableSet.of(
