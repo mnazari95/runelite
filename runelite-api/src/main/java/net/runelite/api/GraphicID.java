@@ -44,10 +44,16 @@ public class GraphicID
 	public static final int STAFF_OF_THE_DEAD = 1228;
 	public static final int IMBUED_HEART = 1316;
 	public static final int FLYING_FISH = 1387;
+<<<<<<< HEAD
 	//Olm
 	public static final int OLM_FALLING_CRYSTAL = 1447;
 	public static final int OLM_LIGHTNING = 1356;
 	public static final int OLM_HEALING_POOLS = 1363;
 	public static final int OLM_GROUND_CRYSTAL_SHATTER = 1338;
 	public static final int OLM_FALLING_CRYSTAL_SHATTER = 1358;
+=======
+	public static final int NPC_CONTACT = 728;
+	public static final int POT_SHARE = 733;
+	public static final int BAKE_PIE = 746;
+>>>>>>> 10403ad9cf6d409ad8b3270b9f7c9e566f5ed8c6
 }
